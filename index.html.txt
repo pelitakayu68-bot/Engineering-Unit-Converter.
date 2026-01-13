@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniConvert | Modern Engineering Suite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">Δ</div>
+                <h1>OMNICONVERT</h1>
+            </div>
+            
+            <nav class="config-panel">
+                <div class="input-section">
+                    <label>SYSTEM PARAMETER</label>
+                    <select id="unitType" onchange="updateUnits()">
+                        <option value="length">Length (Geometric)</option>
+                        <option value="mass">Mass (Statics)</option>
+                        <option value="temp">Temperature (Thermal)</option>
+                    </select>
+                </div>
+
+                <div class="input-section">
+                    <label>INPUT MAGNITUDE</label>
+                    <input type="number" id="inputValue" placeholder="0.00" oninput="convert()">
+                </div>
+
+                <div class="unit-selectors">
+                    <div class="input-section">
+                        <label>FROM</label>
+                        <select id="fromUnit" onchange="convert()"></select>
+                    </div>
+                    <div class="input-section">
+                        <label>TO</label>
+                        <select id="toUnit" onchange="convert()"></select>
+                    </div>
+                </div>
+
+                <button class="primary-btn" onclick="saveConversion()">LOG DATA</button>
+            </nav>
+        </aside>
+
+        <main class="viewport">
+            <header class="main-header">
+                <div class="status-bar">
+                    <span class="status-indicator"></span> SYSTEM READY
+                </div>
+                <div class="project-info">BMKT 1723 | GROUP ASSIGNMENT</div>
+            </header>
+
+            <section class="display-grid">
+                <div class="result-card">
+                    <span class="label">CALCULATED VALUE</span>
+                    <div id="outputValue" class="value-readout">0.0000</div>
+                    <div class="visual-accent"></div>
+                </div>
+            </section>
+
+            <section class="history-container">
+                <div class="history-header">
+                    <h3>DATA ARCHIVE</h3>
+                    <button class="clear-btn" onclick="clearHistory()">PURGE ALL</button>
+                </div>
+                <div class="table-scroll">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>TIME</th>
+                                <th>INPUT SOURCE</th>
+                                <th>CONVERTED RESULT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
